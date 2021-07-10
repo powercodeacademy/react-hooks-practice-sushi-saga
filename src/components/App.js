@@ -9,6 +9,7 @@ const App = () => {
   const [sushiList, setSushiList] = useState([])
   const [indices, setIndices] = useState({ start: 0, end: 4 })
   const [eatenSushi, setEatenSushi] = useState([])
+  const [sushiBudget, setSushiBudget] = useState(200)
 
   useEffect(() => {
     fetch(API)
@@ -23,9 +24,10 @@ const App = () => {
     setIndices({ start: newStart, end: newEnd })
   }
 
-  const addEatenSushi = (sushi) => (
+  const handleEatSushi = (sushi) => {
+    setSushiBudget(sushiBudget - sushi.price)
     setEatenSushi([...eatenSushi, sushi])
-  )
+  }
 
   const sushiToDisplay = sushiList.slice(indices.start, indices.end)
 
@@ -33,11 +35,14 @@ const App = () => {
     <div className="app">
       <SushiContainer
           eatenSushi={eatenSushi}
-          onEatSushi={addEatenSushi}
+          onEatSushi={handleEatSushi}
           sushis={sushiToDisplay}
           updateIndices={updateIndices}
       />
-      <Table plates={eatenSushi}/>
+      <Table
+          plates={eatenSushi}
+          sushiBudget={sushiBudget}
+      />
     </div>
   )
 }
