@@ -25,8 +25,12 @@ const App = () => {
   }
 
   const handleEatSushi = (sushi) => {
-    setSushiBudget(sushiBudget - sushi.price)
-    setEatenSushi([...eatenSushi, sushi])
+    if (sushiBudget >= sushi.price) {
+      setSushiBudget(sushiBudget - sushi.price)
+      setEatenSushi([...eatenSushi, sushi])
+    } else {
+      alert("You don't have enough money to eat this :(")
+    }
   }
 
   const sushiToDisplay = sushiList.slice(indices.start, indices.end)
