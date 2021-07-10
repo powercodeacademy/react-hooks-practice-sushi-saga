@@ -1,11 +1,10 @@
 import React from "react"
 
-const Sushi = ({image, name, price}) => {
+const Sushi = ({image, isEaten, name, onEatSushi, price}) => {
   return (
     <div className="sushi">
-      <div className="plate" onClick={/* Give me a callback! */ null}>
-        {/* Tell me if this sushi has been eaten! */}
-        {false ? null : (
+      <div className="plate" onClick={onEatSushi}>
+        {isEaten ? null : (
           <img
             src={image}
             alt={name}
