@@ -1,16 +1,25 @@
-import React from "react";
-import SushiContainer from "./SushiContainer";
-import Table from "./Table";
+import React, { useState, useEffect } from "react"
 
-const API = "http://localhost:3001/sushis";
+import SushiContainer from "./SushiContainer"
+import Table from "./Table"
 
-function App() {
+const API = "http://localhost:3001/sushis"
+
+const App = () => {
+  const [sushiList, setSushiList] = useState([]])
+
+  useEffect(() => {
+    fetch(API)
+      .then((resp) => resp.json())
+      .then((data) => setSushiList(data))
+  })
+
   return (
     <div className="app">
-      <SushiContainer />
+      <SushiContainer sushis={sushiList}/>
       <Table />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
