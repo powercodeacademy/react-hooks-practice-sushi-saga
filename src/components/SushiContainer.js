@@ -3,7 +3,7 @@ import React from "react"
 import MoreButton from "./MoreButton"
 import Sushi from "./Sushi"
 
-const SushiContainer = ({sushis}) => {
+const SushiContainer = ({ sushis, updateIndices }) => {
   return (
     <div className="belt">
       {sushis.map(sushi => (
@@ -14,7 +14,7 @@ const SushiContainer = ({sushis}) => {
             price={sushi.price}
         />
       ))}
-      <MoreButton />
+      <MoreButton updateIndices={updateIndices} />
     </div>
   )
 }

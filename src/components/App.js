@@ -15,11 +15,21 @@ const App = () => {
       .then((data) => setSushiList(data))
   }, [])
 
+  const updateIndices = () => {
+    const newStart = indices.start + 4
+    const newEnd = indices.end + 4
+
+    setIndices({ start: newStart, end: newEnd })
+  }
+
   const sushiToDisplay = sushiList.slice(indices.start, indices.end)
 
   return (
     <div className="app">
-      <SushiContainer sushis={sushiToDisplay}/>
+      <SushiContainer
+          sushis={sushiToDisplay}
+          updateIndices={updateIndices}
+      />
       <Table />
     </div>
   )
