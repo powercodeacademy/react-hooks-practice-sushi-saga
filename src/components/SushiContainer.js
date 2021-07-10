@@ -12,7 +12,7 @@ const SushiContainer = ({ eatenSushi, onEatSushi, sushis, updateIndices }) => {
         const handleEatSushi = () => {
           if (!isEaten) {
             onEatSushi(sushi)
-          }else{
+          } else {
             alert("You've already eaten this!")
           }
         }
